@@ -1,0 +1,14 @@
+{
+  "name": "Backup-Primary",
+  "description": "POC to launch and configure Tableau Backup Primary",
+  "version": "0.0.1",
+  "dependencies": {
+      "exec": "0.1.x",
+      "ping-monitor": "0.1.x",
+      "win-spawn": "2.x"
+},
+"repository": {
+  "type": "git",
+  "url": "git://github.com/russch/BackupPrimary.git"
+   }
+}
