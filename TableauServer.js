@@ -53,7 +53,8 @@ restartTableau = function (callback) {
 // Helper to call back to Testing machine to let it know to carry on. 
 var httpRequest = function () {
     var options = {
-      host: '192.168.203.29',
+      // IP or hostname of TabJolt Load Generator
+      host: 'yyy.yyy.yyy.yyy',
       path: '/foo',
       port: 7999    
     };

@@ -4,6 +4,7 @@ var currentTest = 0;
 
 var testArray = [];
 
+// Number of seconds, number of users for each test. 
 testArray.push([600,10]);
 testArray.push([600,20]);
 testArray.push([600,30]);
@@ -27,6 +28,7 @@ var executeTest = function  ( testParameters, callback) {
         argArray = [];
         argArray.push('-jar');
         argArray.push('c://tabjolt//bin//perfrunharness.jar');
+        // Change the test plan below if you want
         argArray.push('--t=\\testplans\\InteractVizLoadTest.jmx');
         argArray.push('--d=' + testParameters[0] );
         argArray.push('--c='+ testParameters[1]);
@@ -84,7 +86,8 @@ var server = http.createServer(function(req, res) {
 
 var httpRequest = function () {
     var options = {
-      host: '192.168.203.128',
+      // IP or hostname of Tableau Server Primary
+      host: 'xxx.xxx.xxx.xxx',
       path: '/foo',
       port: 7999
     };
