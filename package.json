@@ -1,6 +1,6 @@
 {
-  "name": "Backup-Primary",
-  "description": "POC to launch and configure Tableau Backup Primary",
+  "name": "LoadTester",
+  "description": "Two apps which automate TabJolt and restart Tableau between tests",
   "version": "0.0.1",
   "dependencies": {
       "exec": "0.1.x",
@@ -9,6 +9,6 @@
 },
 "repository": {
   "type": "git",
-  "url": "git://github.com/russch/BackupPrimary.git"
+  "url": "git://github.com/russch/LoadTester.git"
    }
 }
