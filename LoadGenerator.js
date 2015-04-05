@@ -5,13 +5,14 @@ var currentTest = 0;
 var testArray = [];
 
 // Number of seconds, number of users for each test. 
-testArray.push([600,10]);
-testArray.push([600,20]);
-testArray.push([600,30]);
-testArray.push([600,40]);
-testArray.push([600,50]);
-testArray.push([600,70]);
-testArray.push([600,100]);
+testArray.push([600,10, 'InteractVizLoadTest' ]);
+testArray.push([600,20, 'InteractVizLoadTest']);
+testArray.push([600,30, 'InteractVizLoadTest']);
+testArray.push([600,40, 'InteractVizLoadTest']);
+testArray.push([600,50, 'InteractVizLoadTest']);
+testArray.push([600,70, 'InteractVizLoadTest']);
+testArray.push([600,100, 'InteractVizLoadTest']);
+testArray.push([600,100, 'ViewVizLoadTest']);
 
 
 var testSize = testArray.length;
@@ -29,7 +30,7 @@ var executeTest = function  ( testParameters, callback) {
         argArray.push('-jar');
         argArray.push('c://tabjolt//bin//perfrunharness.jar');
         // Change the test plan below if you want
-        argArray.push('--t=\\testplans\\InteractVizLoadTest.jmx');
+        argArray.push('--t=\\testplans\\' + testParameters[2] + '.jmx');
         argArray.push('--d=' + testParameters[0] );
         argArray.push('--c='+ testParameters[1]);
 
