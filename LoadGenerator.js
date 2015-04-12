@@ -4,14 +4,19 @@ var currentTest = 0;
 
 var testArray = [];
 
-// Number of seconds, number of users for each test. 
-testArray.push([600,10, 'InteractVizLoadTest' ]);
-testArray.push([600,20, 'InteractVizLoadTest']);
-testArray.push([600,30, 'InteractVizLoadTest']);
-testArray.push([600,40, 'InteractVizLoadTest']);
-testArray.push([600,50, 'InteractVizLoadTest']);
-testArray.push([600,70, 'InteractVizLoadTest']);
-testArray.push([600,100, 'InteractVizLoadTest']);
+// Add the tests you want to run here: [# seconds, # vusers, which test to run]
+//testArray.push([600,10, 'InteractVizLoadTest']);
+//testArray.push([600,20, 'InteractVizLoadTest']);
+//testArray.push([600,30, 'InteractVizLoadTest']);
+//testArray.push([600,40, 'InteractVizLoadTest' ]);
+//testArray.push([600,50, 'InteractVizLoadTest']);
+//testArray.push([600,70, 'InteractVizLoadTest']);
+//testArray.push([600,100, 'InteractVizLoadTest']);
+//testArray.push([600,110, 'InteractVizLoadTest' ]);
+//testArray.push([600,120, 'InteractVizLoadTest']);
+//testArray.push([600,130, 'InteractVizLoadTest']);
+//testArray.push([600,140, 'InteractVizLoadTest']);
+testArray.push([600,50, 'ViewVizLoadTest']);
 testArray.push([600,100, 'ViewVizLoadTest']);
 
 
@@ -27,13 +32,30 @@ var executeTest = function  ( testParameters, callback) {
 
     try {
         argArray = [];
-        argArray.push('-jar');
+
+        
+        
+        //   For TabJolt v9
+  argArray.push('-jar');
         argArray.push('c://tabjolt//bin//perfrunharness.jar');
-        // Change the test plan below if you want
         argArray.push('--t=\\testplans\\' + testParameters[2] + '.jmx');
         argArray.push('--d=' + testParameters[0] );
         argArray.push('--c='+ testParameters[1]);
-
+        // Name of the test so I can refer to it later
+        argArray.push('--r=v8DistributedMediumVIEWTEST');
+        
+        //   For TabJolt v8        
+/*      argArray.push('-cp');
+        argArray.push('bin\\*;lib\\*');
+        argArray.push('com.tableausoftware.test.tools.perfRunHarness.Main');
+        argArray.push('--rootPath=c:\\tabjolt');
+        argArray.push('--t=\\testplans\\' + testParameters[2] + '.jmx');
+        argArray.push('--d=' + testParameters[0] );
+        argArray.push('--c='+ testParameters[1]);
+        // Name of the test so I can refer to it later        
+        argArray.push('--r=v8Single');*/
+        
+        
 
         console.log('===== Executing Load Test');
         spawn = exec('java.exe', argArray);
@@ -87,7 +109,6 @@ var server = http.createServer(function(req, res) {
 
 var httpRequest = function () {
     var options = {
-      // IP or hostname of Tableau Server Primary
       host: 'xxx.xxx.xxx.xxx',
       path: '/foo',
       port: 7999
