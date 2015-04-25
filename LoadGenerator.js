@@ -5,19 +5,22 @@ var currentTest = 0;
 var testArray = [];
 
 // Add the tests you want to run here: [# seconds, # vusers, which test to run]
-//testArray.push([600,10, 'InteractVizLoadTest']);
-//testArray.push([600,20, 'InteractVizLoadTest']);
-//testArray.push([600,30, 'InteractVizLoadTest']);
-//testArray.push([600,40, 'InteractVizLoadTest' ]);
-//testArray.push([600,50, 'InteractVizLoadTest']);
-//testArray.push([600,70, 'InteractVizLoadTest']);
-//testArray.push([600,100, 'InteractVizLoadTest']);
-//testArray.push([600,110, 'InteractVizLoadTest' ]);
-//testArray.push([600,120, 'InteractVizLoadTest']);
-//testArray.push([600,130, 'InteractVizLoadTest']);
-//testArray.push([600,140, 'InteractVizLoadTest']);
-testArray.push([600,50, 'ViewVizLoadTest']);
-testArray.push([600,100, 'ViewVizLoadTest']);
+testArray.push([600,10, 'InteractVizLoadTest']);
+testArray.push([600,20, 'InteractVizLoadTest']);
+testArray.push([600,30, 'InteractVizLoadTest']);
+testArray.push([600,40, 'InteractVizLoadTest' ]);
+testArray.push([600,50, 'InteractVizLoadTest']);
+testArray.push([600,60, 'InteractVizLoadTest']);
+testArray.push([600,70, 'InteractVizLoadTest']);
+testArray.push([600,80, 'InteractVizLoadTest']);
+testArray.push([600,90, 'InteractVizLoadTest']);
+testArray.push([600,100, 'InteractVizLoadTest']);
+testArray.push([600,110, 'InteractVizLoadTest']);
+testArray.push([600,120, 'InteractVizLoadTest']);
+testArray.push([600,30, 'ViewVizLoadTest']);
+testArray.push([600,60, 'ViewVizLoadTest']);
+testArray.push([600,90, 'ViewVizLoadTest']);
+testArray.push([600,120, 'ViewVizLoadTest']);
 
 
 var testSize = testArray.length;
@@ -35,17 +38,17 @@ var executeTest = function  ( testParameters, callback) {
 
         
         
-        //   For TabJolt v9
-  argArray.push('-jar');
+    // For TabJolt v9 internal -- this has been modified for release version
+   /*  argArray.push('-jar');
         argArray.push('c://tabjolt//bin//perfrunharness.jar');
         argArray.push('--t=\\testplans\\' + testParameters[2] + '.jmx');
         argArray.push('--d=' + testParameters[0] );
         argArray.push('--c='+ testParameters[1]);
         // Name of the test so I can refer to it later
-        argArray.push('--r=v8DistributedMediumVIEWTEST');
+        argArray.push('--r=2x4-Simple');*/
         
-        //   For TabJolt v8        
-/*      argArray.push('-cp');
+    //   For TabJolt v9 Public   
+     argArray.push('-cp');
         argArray.push('bin\\*;lib\\*');
         argArray.push('com.tableausoftware.test.tools.perfRunHarness.Main');
         argArray.push('--rootPath=c:\\tabjolt');
@@ -53,7 +56,7 @@ var executeTest = function  ( testParameters, callback) {
         argArray.push('--d=' + testParameters[0] );
         argArray.push('--c='+ testParameters[1]);
         // Name of the test so I can refer to it later        
-        argArray.push('--r=v8Single');*/
+        argArray.push('--r=SomeDescriptiveTestNameGoesHere');
         
         
 
