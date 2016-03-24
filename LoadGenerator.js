@@ -90,6 +90,8 @@ var executeTest = function  ( testParameters, callback) {
         argArray.push('--d=' + testParameters[0] );
         argArray.push('--c='+ testParameters[1]);
         // Name of the test so I can refer to it later        
+        argArray.push('--r=' + testParameters[2] + 'Some sort of Description Goes Here');
+        argArray.push('--e=HereIsWhereICanDescribeMyEnviornment');
        
         
 
