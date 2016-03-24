@@ -5,26 +5,60 @@ var currentTest = 0;
 var testArray = [];
 
 // Add the tests you want to run here: [# seconds, # vusers, which test to run]
-testArray.push([600,10, 'InteractVizLoadTest']);
-testArray.push([600,20, 'InteractVizLoadTest']);
-testArray.push([600,30, 'InteractVizLoadTest']);
-testArray.push([600,40, 'InteractVizLoadTest' ]);
-testArray.push([600,50, 'InteractVizLoadTest']);
-testArray.push([600,60, 'InteractVizLoadTest']);
-testArray.push([600,70, 'InteractVizLoadTest']);
-testArray.push([600,80, 'InteractVizLoadTest']);
-testArray.push([600,90, 'InteractVizLoadTest']);
-testArray.push([600,100, 'InteractVizLoadTest']);
-testArray.push([600,110, 'InteractVizLoadTest']);
-testArray.push([600,120, 'InteractVizLoadTest']);
-testArray.push([600,30, 'ViewVizLoadTest']);
-testArray.push([600,60, 'ViewVizLoadTest']);
-testArray.push([600,90, 'ViewVizLoadTest']);
-testArray.push([600,120, 'ViewVizLoadTest']);
-
+testArray.push([1200,10, 'ViewInteractVizLoadTest']);
+testArray.push([1200,20, 'ViewInteractVizLoadTest']);
+testArray.push([1200,30, 'ViewInteractVizLoadTest']);
+testArray.push([1200,40, 'ViewInteractVizLoadTest']);
+testArray.push([1200,50, 'ViewInteractVizLoadTest']);
+testArray.push([1200,60, 'ViewInteractVizLoadTest']);
+testArray.push([1200,70, 'ViewInteractVizLoadTest']);
+testArray.push([1200,80, 'ViewInteractVizLoadTest']);
+testArray.push([1200,90, 'ViewInteractVizLoadTest']);
+testArray.push([1200,100, 'ViewInteractVizLoadTest']);
+testArray.push([1200,110, 'ViewInteractVizLoadTest']); 
+testArray.push([1200,120, 'ViewInteractVizLoadTest']); 
+//testArray.push([600,130, 'ViewInteractVizLoadTest']); 
+//testArray.push([600,140, 'ViewInteractVizLoadTest']); 
+//testArray.push([600,150, 'ViewInteractVizLoadTest']); 
+//testArray.push([600,160, 'ViewInteractVizLoadTest']);
+//testArray.push([600,170, 'ViewInteractVizLoadTest']);
+//testArray.push([600,180, 'ViewInteractVizLoadTest']);
+//testArray.push([600,190, 'ViewInteractVizLoadTest']);
+//testArray.push([600,200, 'ViewInteractVizLoadTest']);
+//testArray.push([600,210, 'ViewInteractVizLoadTest']); 
+//testArray.push([600,220, 'ViewInteractVizLoadTest']); 
+//testArray.push([600,230, 'ViewInteractVizLoadTest']); 
+//testArray.push([600,240, 'ViewInteractVizLoadTest']); 
+/*testArray.push([600,250, 'ViewInteractVizLoadTest']); 
+testArray.push([600,260, 'ViewInteractVizLoadTest']);
+testArray.push([600,270, 'ViewInteractVizLoadTest']);
+testArray.push([600,280, 'ViewInteractVizLoadTest']);
+testArray.push([600,290, 'ViewInteractVizLoadTest']);
+testArray.push([600,300, 'ViewInteractVizLoadTest']);
+testArray.push([600,310, 'ViewInteractVizLoadTest']); 
+testArray.push([600,320, 'ViewInteractVizLoadTest']); 
+testArray.push([600,330, 'ViewInteractVizLoadTest']); 
+testArray.push([600,340, 'ViewInteractVizLoadTest']); 
+testArray.push([600,350, 'ViewInteractVizLoadTest']); 
+testArray.push([600,360, 'ViewInteractVizLoadTest']);
+testArray.push([600,370, 'ViewInteractVizLoadTest']);
+testArray.push([600,380, 'ViewInteractVizLoadTest']);
+testArray.push([600,390, 'ViewInteractVizLoadTest']);
+testArray.push([600,400, 'ViewInteractVizLoadTest']);
+testArray.push([600,410, 'ViewInteractVizLoadTest']); 
+testArray.push([600,420, 'ViewInteractVizLoadTest']); 
+testArray.push([600,430, 'ViewInteractVizLoadTest']); 
+testArray.push([600,440, 'ViewInteractVizLoadTest']); 
+testArray.push([600,450, 'ViewInteractVizLoadTest']); 
+testArray.push([600,460, 'ViewInteractVizLoadTest']);
+testArray.push([600,470, 'ViewInteractVizLoadTest']);
+testArray.push([600,480, 'ViewInteractVizLoadTest']);
+testArray.push([600,490, 'ViewInteractVizLoadTest']);
+testArray.push([600,500, 'ViewInteractVizLoadTest']);  */
 
 var testSize = testArray.length;
 console.log(testSize);
+
 
 
 
@@ -48,22 +82,25 @@ var executeTest = function  ( testParameters, callback) {
         argArray.push('--r=2x4-Simple');*/
         
     //   For TabJolt v9 Public   
-     argArray.push('-cp');
-        argArray.push('bin\\*;lib\\*');
+      argArray.push('-cp');
+        argArray.push('c:\\tabjolt\\bin\\perfRunHarness\\*');
         argArray.push('com.tableausoftware.test.tools.perfRunHarness.Main');
         argArray.push('--rootPath=c:\\tabjolt');
         argArray.push('--t=\\testplans\\' + testParameters[2] + '.jmx');
         argArray.push('--d=' + testParameters[0] );
         argArray.push('--c='+ testParameters[1]);
         // Name of the test so I can refer to it later        
-        argArray.push('--r=SomeDescriptiveTestNameGoesHere');
-        
+       
         
 
         console.log('===== Executing Load Test');
+        console.log(argArray);
         spawn = exec('java.exe', argArray);
+
     } catch (e) {
+        console.log('error spawning!');
         console.log(e);
+        console.log(e.message);
     }
 
     spawn.stdout.on('data', function (data) {
@@ -71,10 +108,10 @@ var executeTest = function  ( testParameters, callback) {
        
     });
 
-    spawn.stderr.on('data', function (data) {
+/*    spawn.stderr.on('data', function (data) {
         console.log('sterr failoverprimary: ' + data.toString());
         callback(1);
-    });
+    });*/
 
     spawn.on('close', function (code) {
         callback(0);
@@ -112,7 +149,8 @@ var server = http.createServer(function(req, res) {
 
 var httpRequest = function () {
     var options = {
-      host: 'xxx.xxx.xxx.xxx',
+	//ip or hostname of the Tableau Server
+      host: '111.111.111.111',
       path: '/foo',
       port: 7999
     };
